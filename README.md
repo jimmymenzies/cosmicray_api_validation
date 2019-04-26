@@ -1,6 +1,6 @@
-# Jabiru API Validation studies
+# Cosmic Ray API Validation studies
 
-This repository contains validation studies for the JABIRU Cosmic
+This repository contains validation studies for the Cosmic
 Ray API at https://amentum.space
 
 Each directory contains:
@@ -13,7 +13,7 @@ thumbnail on the landing page of the API.
 
 Clone the git repository
 
-    git clone https://github.com/amentumspace/jabiru_api_validation.git
+    git clone https://github.com/amentumspace/cosmicray_api_validation.git
 
 Create a new branch
 
@@ -45,4 +45,4 @@ Commit and push the branch to the repository.
 Finally, login to github and create a pull request so we can merge your branch
 with the master branch and include a thumbnail to the image on the API landing page.
 
-Copyright 2018 Amentum Aerospace, Australia
+Copyright 2019 Amentum Aerospace, Australia

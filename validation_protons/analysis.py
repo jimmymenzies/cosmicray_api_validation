@@ -34,12 +34,12 @@ headers = {
   'Authorization' : os.environ["AMENTUMAPIKEY"]
 }
 
-# read the experimental data from YAML file
+# Read the experimental data from YAML file
 with open('./protons_mocchiuti.yaml') as f : 
     doc = yaml.load(f, Loader=yaml.FullLoader)
 f.close()
 
-
+# For each atmospheric depth in the experimental data, in reverse order
 for i,plot in enumerate(doc['plots'][::-1]):
 
     data = np.array(plot['data'])
@@ -67,19 +67,18 @@ for i,plot in enumerate(doc['plots'][::-1]):
         , label = this_label
         , color = this_color)
 
-    # over-write the atmospheric depth parameter for this dataset
+    # Over-write the atmospheric depth parameter for this dataset
     payload['atmospheric_depth'] = str(atm_depth)
 
-    # hit the Cosmic Ray API and fetch the effective dose rate
+    # Hit the Cosmic Ray API and fetch the effective dose rate
     try:
         response = requests.get(hostname, params=payload, headers=headers)
     except requests.exceptions.RequestException as e:  
         print(e)
-        sys.exit(1)
     
     json_payload = response.json()
 
-    #con
+    # Extract the energy differential flux distribution
     kes = json_payload["energies"]["data"] # MeV
     flux = json_payload["intensities"]["data"] # /cm2/s/sr/MeV
 
@@ -89,6 +88,7 @@ for i,plot in enumerate(doc['plots'][::-1]):
         , marker = "None"
         , color = this_color)
 
+# Finalise formatting and save the plot
 ax.loglog()
 ax.grid()
 ax.set_xlim(left = 1e2, right =1e5)

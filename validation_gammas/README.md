@@ -15,3 +15,6 @@ Figure 1: Energy differential intensity of downward moving gammas as calculated 
 # Data sources 
 
 Cecchini, S., et al. "On the altitude dependence of gamma-rays spectra in the Earth's atmosphere." International Cosmic Ray Conference. Vol. 2. 2005.
+
+Copyright 2019 Amentum Aerospace, Australia
+

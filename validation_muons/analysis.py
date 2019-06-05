@@ -5,6 +5,7 @@ import numpy as np
 import os 
 from scipy import interpolate
 import requests
+import sys
 import yaml
 
 # initialise the figure
@@ -77,6 +78,8 @@ for i, plot in enumerate(doc['particles'][0]['plots']):
     calc_flux_vs_depth = []
     
     for depth in depths:
+
+        print('Fetching data for depth {} g/cm2'.format(depth))
         
         # Add atmospheric depth to query string params
         payload['atmospheric_depth'] = str(depth)
@@ -85,7 +88,8 @@ for i, plot in enumerate(doc['particles'][0]['plots']):
         # intensity distribution
         try:
             response = requests.get(hostname, params=payload, headers=headers)
-        except requests.exceptions.RequestException as e:  
+            response.raise_for_status()
+        except requests.exceptions.HTTPError as e:  
             print(e)
             sys.exit(1)
             

@@ -18,7 +18,7 @@ Documentation and source code for the CARI-7 code can be found [here](https://ww
 
 **Figure 2**: Effective Dose Rate for waypoints along the path of Flight QF64 from Johannesburg to Sydney on 28th of July 2018, as calculated by CARI-7 and the Cosmic Ray API.
 
-## Discussion
+# Discussion
 
 The increase in Effective Dose Rate mid-flight is due to two factors: 1. The route takes the flight as far south as -47.24 degrees latitude. The intensity of cosmic rays is generally higher towards the poles due to effects of the Earth's magnetic field; there is a concomitant increase in the Effective Dose rate. 2. The altitude is greater mid-flight.
 

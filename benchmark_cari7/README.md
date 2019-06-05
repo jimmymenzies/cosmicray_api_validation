@@ -10,9 +10,11 @@ Documentation and source code for the CARI-7 code can be found [here](https://ww
 
 # Results
 
-![](./gamma_cecchini.png)
+![](./benchmark_cari7_map.png)
 
 **Figure 1**: Waypoints for Flight QF64 from Johannesburg to Sydney on 28th of July 2018
+
+![](./api_cari6.png)
 
 **Figure 2**: Effective Dose Rate for waypoints along the path of Flight QF64 from Johannesburg to Sydney on 28th of July 2018, as calculated by CARI-7 and the Cosmic Ray API.
 

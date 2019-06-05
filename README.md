@@ -1,48 +1,34 @@
 # Cosmic Ray API Validation studies
 
-This repository contains validation studies for the Cosmic
-Ray API at https://amentum.space
+This repository contains validation studies for the Cosmic Ray API available at https://amentum.space
 
-Each directory contains:
-1. a Jupyter notebook with calls to the API to calculate cosmic ray doses or intensities
-2. files (e.g. CSV, YAML) containing published experimental dose or intensity data, and
-3. an image of the comparison between calculation and experiment, used as a
-thumbnail on the landing page of the API.
+Each directory contains: 
 
-## Adding a validation study
+1. A README.md file containing a description of the study, summary of findings, and instructions to run the Python code and re-generate the results.
+2. If applicable, files containing published experimental data for the purpose of validation, or data calculated by alternative models for the purpose of benchmarking.
+3. Images comparing calculations obtained using the Cosmic Ray API alongside experimental results or predictions of other models.
 
-Clone the git repository
+Feel free to add a validation study by creating a new branch and submitting a pull request. 
 
-    git clone https://github.com/amentumspace/cosmicray_api_validation.git
+# Running the analyses
 
-Create a new branch
+See the analysis.py script in each directory to see how the Amentum Cosmic Ray API was used to retrieve cosmic ray quantities, and the Python code that was used to fetch validation data from experimental measurements, or benchmarking data from another model.
 
-    git checkout -b Study_<study number>
+Then install the necessary Python packages included in the first few lines of the script using your Python package manager.
 
-where `<study_number>` increments the current highest study number in the repository.
+Set the following environment variable to store your API key. Assuming you are using bash shell, this will be:
 
-Create a new directory and change to it
+    export AMENTUMAPIKEY=<your key>
 
-    mkdir Study_<study number>; cd Study_<study number>;
+Alternatively you can hard code it in the Python code.
 
-Launch Jupyter and create a new notebook.
+If you do not have an API key, you can signup for a free one [here](https://developer.amentum.space/portal/) 
 
-    jupyter-notebook
+Then run the script using the following command:
 
-Write Python code that calculates doses or intensities using the API and
-plots calculated and experimental data, and saves an image of the
-resulting plot. You can based the notebook on those in the existing directories.
+    python analysis.py 
 
-Add the files to the repository and write a commit message.     
-
-    git add <jupyter_notebook> <experimental_data_file> <image>
-
-Commit and push the branch to the repository.
-
-    git commit -a -m "A descriptive commit message."
-    git push -u origin Study_<study number>
-
-Finally, login to github and create a pull request so we can merge your branch
-with the master branch and include a thumbnail to the image on the API landing page.
+That will produce results as PNG files in the same directory. 
 
 Copyright 2019 Amentum Aerospace, Australia
+

@@ -15,7 +15,8 @@ diff_intensity_label = r"$\frac{d \varphi}{d E} \, (cm^{-2} s^{-1} sr^{-1} MeV^{
 ax.set_ylabel(diff_intensity_label);
 colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k',  'navy', 'orange']
 
-hostname = "https://developer.amentum.space/cosmic-rays/api/get_differential_intensity"
+
+hostname = "https://cosmicrays.amentum.space/api/get_differential_intensity"
 
 # The request oackage lets you pass query string params as a dictionary, kewl
 payload = {
@@ -28,11 +29,6 @@ payload = {
     'angle' : '1.0'
 }
 
-# Include the API key in the request header 
-# Head to https://developer.amentum.space/portal for an API key
-headers = {
-  'Authorization' : os.environ["AMENTUMAPIKEY"]
-}
 
 # Read the experimental data from YAML file
 with open('./protons_mocchiuti.yaml') as f : 
@@ -72,7 +68,7 @@ for i,plot in enumerate(doc['plots'][::-1]):
 
     # Hit the Cosmic Ray API and fetch the effective dose rate
     try:
-        response = requests.get(hostname, params=payload, headers=headers)
+        response = requests.get(hostname, params=payload)
     except requests.exceptions.RequestException as e:  
         print(e)
     

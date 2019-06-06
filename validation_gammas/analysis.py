@@ -16,7 +16,7 @@ ax.set_ylabel(diff_intensity_label)
 colors = ['b', 'g', 'r', 'c', 'm', 'y', 'k']
 
 # Construct the target URL
-hostname = "https://developer.amentum.space/cosmic-rays/api/get_differential_intensity"
+hostname = "https://cosmicrays.amentum.space/api/get_differential_intensity"
 
 # Requests lets you pass query string params as a dictionary
 payload = {
@@ -26,12 +26,6 @@ payload = {
 
 # This study contains results from experiments on different dates and 
 #locations, so other parameters are set in the loop
-
-# Include the API key in the request header 
-# Head to https://developer.amentum.space/portal for an API key
-headers = {
-  'Authorization' : os.environ["AMENTUMAPIKEY"]
-}
 
 # Read the experimental data from YAML file
 with open('./gamma_cecchini.yaml') as f : 
@@ -93,7 +87,7 @@ for i,plot in enumerate(doc['plots']):
     
     # Hit the Cosmic Ray API and fetch the intensities
     try:
-        response = requests.get(hostname, params=payload, headers=headers)
+        response = requests.get(hostname, params=payload)
         response.raise_for_status()
     except requests.exceptions.HTTPError as e:  
         print(e)

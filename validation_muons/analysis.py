@@ -20,13 +20,7 @@ with open('./muons_circella.yaml') as f :
     doc = yaml.load(f, Loader=yaml.FullLoader)
 f.close()
 
-hostname = "https://developer.amentum.space/cosmic-rays/api/get_differential_intensity"
-
-# Include the API key in the request header 
-# Head to https://developer.amentum.space/portal for an API key
-headers = {
-  'Authorization' : os.environ["AMENTUMAPIKEY"]
-}
+hostname = "https://cosmicrays.amentum.space/api/get_differential_intensity"
 
 # Requests lets you pass query string params as a dictionary
 payload = {
@@ -87,7 +81,7 @@ for i, plot in enumerate(doc['particles'][0]['plots']):
         # Hit the Cosmic Ray API and fetch the energy differential 
         # intensity distribution
         try:
-            response = requests.get(hostname, params=payload, headers=headers)
+            response = requests.get(hostname, params=payload)
             response.raise_for_status()
         except requests.exceptions.HTTPError as e:  
             print(e)

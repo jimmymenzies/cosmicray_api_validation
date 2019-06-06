@@ -47,7 +47,7 @@ ax_dose.set_xlabel("Waypoint #")
 ax_dose.set_ylabel("Effective Dose Rate, uSv/hr"); 
 
 # Construct the target URL
-hostname = "https://developer.amentum.space/cosmic-rays/api/calculate_dose_rate"
+hostname = "https://cosmicrays.amentum.space/api/calculate_dose_rate"
 
 # Requests lets you pass query string params as a dictionary
 payload = {
@@ -58,11 +58,6 @@ payload = {
     
 }
 # Append other parameters to the query string to set the date and particle type  
-
-# Include the API key in the request header 
-headers = {
-  'Authorization' : os.environ['AMENTUMAPIKEY']
-}
 
 # Initialise lists to store dose rates 
 api_dose_rates = []
@@ -83,7 +78,7 @@ for step in cari_results:
     
     # Hit the Cosmic Ray API and fetch the effective dose rate
     try:
-        response = requests.get(hostname, params=payload, headers=headers)
+        response = requests.get(hostname, params=payload)
         response.raise_for_status()
     except requests.exceptions.HTTPError as e:  
         print(e)
